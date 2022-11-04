@@ -126,6 +126,6 @@ class Student
         return [
             "success" => true,
             "message" => "Estudante apagado com sucesso!"
-          ];
+        ];
     }
 }

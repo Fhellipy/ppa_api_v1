@@ -96,7 +96,7 @@ class Teacher
             ];
         }
 
-        $where = JobRepository::whereJobByDeadline($siape, $id_class);
+        $where = JobRepository::whereJobByDeadline($id_class);
 
         return [
             'info' => JobRepository::findInfoJobByTeacher($where)
