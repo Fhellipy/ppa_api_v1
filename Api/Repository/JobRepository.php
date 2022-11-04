@@ -74,7 +74,7 @@ class JobRepository
   {
     //QUERY
     $query = self::getQueryInfoJob($where);
-    
+
     //Cria o PDO de sql que busca os cursos
     $results = (new Database())->execute($query);
 
@@ -147,5 +147,34 @@ class JobRepository
                    j2.deadline 
                    HAVING j2.deadline = j.deadline
                    ORDER BY j.deadline ASC";
+  }
+
+  /**
+   * Método responsável por buscar as informações dos trabalhos de um aluno no banco
+   */
+  public static function findTypesJob()
+  {
+    //QUERY
+    $query = self::getQueryTypeJob();
+
+    //Cria o PDO de sql que busca os tipos dos trabalhos
+    $results = (new Database())->execute($query);
+
+    //Transforma a variável em object e o insere no array
+    while ($obType = $results->fetchObject()) {
+
+      $itens[] = $obType;
+    }
+
+    //RETORNA OS ITENS
+    return $itens;
+  }
+
+  /**
+   * Método responsável por criar a query que busca todos os typo de trabalhos através de um select
+   */
+  public static function getQueryTypeJob()
+  {
+    return "SELECT ty.id_type, ty.description as type FROM type ty ORDER BY ty.description ASC";
   }
 }

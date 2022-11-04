@@ -44,6 +44,16 @@ $obRouter->get('/class', [
   }
 ]);
 
+// ROTA DE BUSCAR OS TIPOS DOS TRABALHOS
+$obRouter->get('/types/job', [
+  'middlewares' => [
+    'jwt-auth'
+  ],
+  function () {
+    return new Response(200, Job::getTypesJob());
+  }
+]);
+
 // ROTA DE BUSCAR UMA TURMA, ATRÁVES DE ID
 $obRouter->post('/alerts/day', [
   'middlewares' => [

@@ -5,6 +5,7 @@ namespace Api\Controller;
 use Api\Database\Pagination;
 use Api\Model\EntityJobRegister;
 use Api\Repository\ClassRepository;
+use Api\Repository\JobRepository;
 
 class Job
 {
@@ -74,6 +75,17 @@ class Job
     return [
       "success" => true,
       "message" => "Curso apagada com sucesso!"
+    ];
+  }
+
+
+  /**
+   * Método responsável por buscar as informações dos tipos de trabalgo do banco de dados
+   */
+  public static function getTypesJob()
+  {
+    return [
+      'typesJob' => JobRepository::findTypesJob()
     ];
   }
 }
